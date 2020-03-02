@@ -1,0 +1,117 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "糗事",
+				"app-plus": {
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"titleNView": {
+						"searchInput": {
+							"align": "center",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px",
+							"placeholder": "搜索糗事",
+							"placeholderColor": "#CCCCCC",
+							"disabled": true
+						},
+						"buttons": [{
+								"float": "left",
+								"color": "#FF981E",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/icon.ttf",
+								"text": "\ue609"
+							},
+							{
+								"float": "right",
+								"color": "#010101",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/icon.ttf",
+								"text": "\ue653"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/news/news",
+			"style": {
+				"navigationBarTitleText": "动态"
+			}
+		},
+		{
+			"path": "pages/paper/paper",
+			"style": {
+				"navigationBarTitleText": "小纸条"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}, {
+			"path": "pages/class和style绑定/class和style绑定",
+			"style": {}
+		},
+		{
+			"path": "pages/属性应用动态赋值/属性应用动态赋值",
+			"style": {}
+		}, {
+			"path": "pages/条件渲染/条件渲染",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
+			}
+		}, {
+			"path": "pages/列表渲染/列表渲染",
+			"style": {}
+		}, {
+			"path": "pages/test/test",
+			"style": {}
+		}
+	    ,{
+            "path" : "pages/index-search/index-search",
+            "style" : {}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "仿糗事百科",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#555555",
+		"selectedColor": "#FFDF34",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+				"iconPath": "static/tabbar/index.png",
+				"selectedIconPath": "static/tabbar/indexed.png",
+				"text": "糗事",
+				"pagePath": "pages/index/index"
+			}, {
+				"iconPath": "static/tabbar/news.png",
+				"selectedIconPath": "static/tabbar/newsed.png",
+				"text": "动态",
+				"pagePath": "pages/news/news"
+			}, {
+				"iconPath": "static/tabbar/paper.png",
+				"selectedIconPath": "static/tabbar/papered.png",
+				"text": "小纸条",
+				"pagePath": "pages/paper/paper"
+			}, {
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/homeed.png",
+				"text": "我的",
+				"pagePath": "pages/mine/mine"
+			}
+
+		]
+	}
+}

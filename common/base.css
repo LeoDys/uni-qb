@@ -1,0 +1,44 @@
+/* 基础flex css */
+.u-f {
+	display: flex;
+}
+
+/* 水平居中 */
+.u-f-jcc {
+	justify-content: center;
+}
+
+/* 垂直居中 */
+.u-f-acc {
+	align-items: center;
+}
+
+/* 靠左右两边 */
+.u-f-jcsb {
+	justify-content: space-between;
+}
+
+/* 竖向排列 */
+.u-f-c {
+	flex-direction: column;
+}
+
+/* 权重是1 */
+.u-f-1 {
+	flex: 1;
+}
+
+/* flex布局 */
+.u-f,.u-f-ac,.u-f-ajc{
+	display: flex;
+}
+.u-f-ac,.u-f-ajc{
+	align-items: center;
+}
+.u-f-ajc{
+	justify-content: center;
+}
+.u-f-jsb{
+	justify-content: space-between;
+}
+
