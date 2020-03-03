@@ -42,3 +42,7 @@
 	justify-content: space-between;
 }
 
+.u-f-1{
+	flex: 1;
+}
+

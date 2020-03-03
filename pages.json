@@ -34,8 +34,33 @@
 					}
 				}
 			}
-		},
-		{
+		}, {
+			"path": "pages/index-search/index-search",
+			"style": {
+				"navigationBarTitleText": "搜 索",
+				"app-plus": {
+					"scrollIndicator": "none",
+					"bounce": "none",
+					"titleNView": {
+						"autoBackButton":false,
+						"searchInput": {
+							"align": "center",
+							"backgroundColor": "#F7F7F7",
+							"borderRadius": "4px",
+							"placeholder": "搜 索 糗 事",
+							"placeholderColor": "#CCCCCC",
+							"disabled": false
+						},
+						"buttons": [{
+							"float": "right",
+							"color": "#010101",
+							"fontSize": "14px",
+							"text": "取消"
+						}]
+					}
+				}
+			}
+		}, {
 			"path": "pages/news/news",
 			"style": {
 				"navigationBarTitleText": "动态"
@@ -75,8 +100,12 @@
 			"style": {}
 		}
 	    ,{
-            "path" : "pages/index-search/index-search",
-            "style" : {}
+            "path" : "pages/publish/publish",
+            "style" : {
+				"app-plus": {
+					"titleNView":false
+				}
+			}
         }
     ],
 	"globalStyle": {

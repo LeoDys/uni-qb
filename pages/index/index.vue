@@ -280,6 +280,13 @@
 			}
 			this.$navTo.togo(url, param)
 		},
+		onNavigationBarButtonTap(e) {
+			switch (e.index) {
+				case 1:
+					this.$navTo.togo("../publish/publish", null);
+					break
+			}
+		},
 		methods: {
 			guanzhu(index) {
 				this.newslist[this.tabIndex].list[index].isguanzhu = true;
@@ -335,16 +342,16 @@
 	.uni-swiper-tab {
 		border-bottom: 1upx solid #EEEEEE;
 	}
-	
+
 	.swiper-tab-list {
 		color: #969696;
 		font-weight: bold;
 	}
-	
+
 	.uni-tab-bar .active {
 		color: #343434;
 	}
-	
+
 	.active .swiper-tab-line {
 		border-bottom: 6upx solid #FEDE33;
 		width: 70upx;
