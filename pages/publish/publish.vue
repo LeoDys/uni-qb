@@ -11,13 +11,18 @@
 		</view>
 		<!-- 图片上传 -->
 		<uploud-images @uploud = "uploud"></uploud-images>
+		<!-- 弹出层 -->
+		<uni-popup ref="showpopup" :type="center" ><text class="popup-content">123456789</text></uni-popup>
 	</view>
 </template>
 
 <script>
 	import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
 	import uploudImages from '../../components/common/uploud-images.vue';
-	import permision from "@/common_js/permission.js"
+	import uniPopup from '../../components/common/uni-popup.vue';
+	
+	import permision from "@/common_js/permission.js";
+	
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -31,8 +36,16 @@
 	export default {
 		components: {
 			uniNavBar,
-			uploudImages
+			uploudImages,
+			uniPopup
 		},
+		onShow() {
+			
+		},
+		onReady() {
+			this.showPop();
+		}
+		,
 		data() {
 			return {
 				textareaText: "",
@@ -59,6 +72,11 @@
 			},
 			uploud(arr) {
 				this.imageList = arr;
+			},
+			showPop() {
+				this.$nextTick(() => {
+					this.$refs['showpop'].open()
+				})
 			}
 		}
 	}
