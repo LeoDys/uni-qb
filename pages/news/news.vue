@@ -11,7 +11,7 @@
 			</block>
 			<view class="nav-bar-center u-f-ajc">
 				<block v-for="(tab,index) in tabs" :key="index">
-					<view class="u-f-ajc" :class="{'active':tabIndex == index}" @tap="chang(index)">
+					<view class="nav-bar-tab u-f-ajc" :class="{'active':tabIndex == index}" @tap="chang(index)">
 						{{tab}}
 						<view v-if="(tabIndex == index)" class="nav-bar-underline"></view>
 					</view>
@@ -59,11 +59,13 @@
 		margin-left: 16upx;
 		border: 1px solid #FF0000;
 	}
+	.nav-bar-tab {
+		border: 1px solid #FF0000;
+	}
 
 	.nav-bar-right>view {
 		font-size: 35upx;
 		color: #00FF00;
-		border: 1px solid #FF0000;
 	}
 
 	.nav-bar-right {
@@ -72,16 +74,19 @@
 	}
 
 	.nav-bar-underline {
-		border-bottom: 4px solid #00FF00;
-		border-top: 4px solid #00FF00;
-		border-radius: 10upx;
-		width: 70upx;
+		/* border-bottom: 2px solid #00FF00; */
+		/* border-top: 2px solid #00FF00; */
+		height: 8upx;
+		background-color: #00FF00;
+		border-radius: 20upx;
+		width: 60upx;
 		position: absolute;
 		bottom: 0upx;
 	}
 
 	.nav-bar-center {
 		width: 100%;
+		height: 100%;
 		margin-left: -20upx;
 		position: relative;
 	}
@@ -93,6 +98,6 @@
 	.nav-bar-center>view {
 		font-size: 30upx;
 		padding: 0 10upx;
-		margin-bottom: 5upx;
+		/* margin-bottom: 5upx; */
 	}
 </style>
