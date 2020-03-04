@@ -37,7 +37,7 @@
 
 <script>
 	import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
-	import permision from "@/common_js/permission.js"
+	import permisionManager  from "@/common_js/permission.js"
 	var sourceType = [
 		['camera'],
 		['album'],
@@ -55,7 +55,7 @@
 		data() {
 			return {
 				textareaText: "",
-
+				
 				imageList: [],
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
@@ -83,6 +83,9 @@
 				});
 			},
 			chooseImage: async function() {
+				
+				console.log(plus);
+				
 				// #ifdef APP-PLUS
 				// TODO 选择相机或相册时 需要弹出actionsheet，目前无法获得是相机还是相册，在失败回调中处理
 				if (this.sourceTypeIndex !== 2) {
@@ -148,8 +151,8 @@
 			},
 			async checkPermission(code) {
 				let type = code ? code - 1 : this.sourceTypeIndex;
-				let status = permision.isIOS ? await permision.requestIOS(sourceType[type][0]) :
-					await permision.requestAndroid(type === 0 ? 'android.permission.CAMERA' :
+				let status = permisionManager.isIOS ? await permisionManager.requestIOS(sourceType[type][0]) :
+					await permisionManager.requestAndroid(type === 0 ? 'android.permission.CAMERA' :
 						'android.permission.READ_EXTERNAL_STORAGE');
 
 				if (status === null || status === 1) {
@@ -160,7 +163,7 @@
 						confirmText: "设置",
 						success: function(res) {
 							if (res.confirm) {
-								permision.gotoAppSetting();
+								permisionManager.gotoAppSetting();
 							}
 						}
 					})
@@ -175,6 +178,7 @@
 	.uni-textarea {
 		border: 1upx solid #EEEEEE;
 	}
+
 	.uni-uploader-info {
 		margin-right: 30upx;
 	}

@@ -178,8 +178,8 @@ function requestIOS(permissionID) {
 
 function requestAndroid(permissionID) {
     return new Promise((resolve, reject) => {
-        plus.android.requestPermissions(
-            [permissionID],
+        plus.android.requestPermissions([permissionID],
+			// 成功回调
             function(resultObj) {
                 var result = 0;
                 for (var i = 0; i < resultObj.granted.length; i++) {
@@ -199,6 +199,7 @@ function requestAndroid(permissionID) {
                 }
                 resolve(result);
             },
+			// 失败回调
             function(error) {
                 console.log('result error: ' + error.message)
                 resolve({
@@ -231,12 +232,20 @@ function gotoAppPermissionSetting() {
         intent.setData(uri);
         mainActivity.startActivity(intent);
     }
+	permission.isIOS = 100;
 }
 
 const permission = {
+	// isIOS(){
+	//     return typeof isIOS === 'boolean' ? isIOS : (isIOS = uni.getSystemInfoSync().platform === 'ios')
+	// },
     get isIOS(){
         return typeof isIOS === 'boolean' ? isIOS : (isIOS = uni.getSystemInfoSync().platform === 'ios')
     },
+	// 變量  不是方法  对方法的一个封装
+	// set isIOS(is) {
+	// 	return 1
+	// }
     requestIOS: requestIOS,
     requestAndroid: requestAndroid,
     gotoAppSetting: gotoAppPermissionSetting
