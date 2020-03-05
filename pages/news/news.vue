@@ -1,94 +1,113 @@
 <template>
 	<view>
-		<uni-nav-bar fixed="true" :statusBar="true" @clickLeft="signIn" @clickRight="publish">
-			<block slot="left">
-				<view class="nav-bar-left u-f-ajc">
-					<view class="icon iconfont icon-qiandao "></view>
-				</view>
-			</block>
-			<view class="nav-bar-center u-f-ajc">
-				<block v-for="(tab,index) in tabs" :key="index">
-					<view class="nav-bar-tab u-f-ajc" :class="{'active':tabIndex == index}" @tap="chang(index)">
-						{{tab}}
-						<view v-if="(tabIndex == index)" class="nav-bar-underline"></view>
-					</view>
-				</block>
-			</view>
-			<block slot="right">
-				<view class="nav-bar-right u-f-ajc">
-					<view class="icon iconfont icon-bianji1"></view>
-				</view>
-			</block>
-		</uni-nav-bar>
-
-
-
+		
+		<news-nav-bar :tabs="tabs" @changTab = "changTab"></news-nav-bar>
+		
+		<block v-for="(item,index) in list" :key = "index">
+			<common-list :item = "item" :index="index"></common-list>
+		</block>
 	</view>
 </template>
 
 <script>
-	import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
+	
+	import commonList from '@/components/common/common-list.vue';
+	import newsNavBar from '../../components/news/news-nav-bar.vue';
+	
 	export default {
 		components: {
-			uniNavBar
+			commonList,
+			newsNavBar
 		},
 		data() {
 			return {
 				tabIndex: 0,
-				tabs: ['关注', '话题']
+				tabs: ['关注', '话题'],
+				list: [
+					// 文字
+					{
+						userpic: "../../static/demo/userpic/12.jpg",
+						username: "哈哈",
+						sex: 0, //0 男 1 女
+						age: 25,
+						isguanzhu: false,
+						title: "我是标题",
+						titlepic: "",
+						video: false,
+						share: false,
+						path: "深圳 龙岗",
+						sharenum: 20,
+						commentnum: 30,
+						goodnum: 20
+					},
+					// 图文
+					{
+						userpic: "../../static/demo/userpic/12.jpg",
+						username: "哈哈",
+						sex: 0, //0 男 1 女
+						age: 25,
+						isguanzhu: false,
+						title: "我是标题",
+						titlepic: "../../static/demo/datapic/13.jpg",
+						video: false,
+						share: false,
+						path: "深圳 龙岗",
+						sharenum: 20,
+						commentnum: 30,
+						goodnum: 20
+					},
+					// 视频
+					{
+						userpic: "../../static/demo/userpic/12.jpg",
+						username: "哈哈",
+						sex: 0, //0 男 1 女
+						age: 25,
+						isguanzhu: false,
+						title: "我是标题",
+						titlepic: "../../static/demo/datapic/13.jpg",
+						video: {
+							looknum: "20w",
+							long: "2:47"
+						},
+						share: false,
+						path: "深圳 龙岗",
+						sharenum: 20,
+						commentnum: 30,
+						goodnum: 20
+					},
+					// 分享
+					{
+						userpic: "../../static/demo/userpic/12.jpg",
+						username: "哈哈",
+						sex: 0, //0 男 1 女
+						age: 25,
+						isguanzhu: false,
+						title: "我是标题",
+						titlepic: "",
+						video: false,
+						share: {
+							title: "我是分享的标题",
+							titlepic: "../../static/demo/datapic/14.jpg"
+						},
+						path: "深圳 龙岗",
+						sharenum: 20,
+						commentnum: 30,
+						goodnum: 20
+					},
+				]
 			}
 		},
 		methods: {
-			chang(index) {
-				this.tabIndex = index;
-			},
-			publish() {
-				let url = '../publish/publish';
-				this.$navTo.togo(url)
+			changTab(index) {
+				this.tabIndex =  index;
+				uni.showToast({
+					title: index+""
+				});
 			}
 		}
 	}
 </script>
 
 <style>
-	.nav-bar-left>view {
-		font-size: 35upx;
-		color: #8A6DE9;
-		margin-left: 16upx;
-	}
-
-	.nav-bar-right>view {
-		font-size: 35upx;
-		color: #00FF00;
-	}
-
-	.nav-bar-right {
-		width: 100%;
-		padding: 0 25upx;
-	}
-
-	.nav-bar-underline {
-		height: 8upx;
-		background-color: #00FF00;
-		border-radius: 20upx;
-		width: 60upx;
-		position: absolute;
-		bottom: 0upx;
-	}
-
-	.nav-bar-center {
-		width: 100%;
-		height: 100%;
-		margin-left: -20upx;
-		position: relative;
-	}
-
-	.active {
-		color: #007AFF;
-	}
-
-	.nav-bar-center>view {
-		font-size: 30upx;
-		padding: 0 10upx;
-	}
+	
 </style>
