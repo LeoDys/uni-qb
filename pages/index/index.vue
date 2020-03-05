@@ -290,7 +290,7 @@
 					break
 			}
 		},
-		mmethods: {
+		methods: {
 			guanzhu(index) {
 				this.newslist[this.tabIndex].list[index].isguanzhu = true;
 				uni.showToast({

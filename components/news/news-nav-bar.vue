@@ -32,17 +32,15 @@
 		},
 		data() {
 			return {
-				tabIndex: 0
 			}
 		},
 		props: {
 			tabs: Array,
+			tabIndex:Number
 		},
 		methods: {
 			changTabs(index) {
-				this.tabIndex = index;
 				this.$emit("changTab", index);
-				// this.tabIndex = index;
 			},
 			publish() {
 				let url = '../publish/publish';
