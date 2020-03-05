@@ -14,7 +14,7 @@
 		<!-- 弹出层 -->
 		<!-- <uni-popup ref="showpopup" :type="center" @change="change"><text class="popup-content">{{ content }}</text></uni-popup> -->
 
-		<uni-popup ref="showtip" :type="center" :mask-click="false" @change="change">
+		<uni-popup ref="showtip" type="center" :mask-click="false" @change="change">
 			<view class="uni-tip">
 				<text class="uni-tip-title">警告</text>
 				<text class="uni-tip-content">这是一个通过自定义 popup，自由扩展的 警告弹窗。点击遮罩不会关闭弹窗。</text>
@@ -24,24 +24,32 @@
 				</view>
 			</view>
 		</uni-popup>
+
+
+		<!-- <view class="parent">
+
+			<view class="u-f-ajc">1</view>
+			<view class="u-f-ajc">2</view>
+			<view class="u-f-ajc">3</view>
+			<view class="u-f-ajc">4</view>
+
+		</view> -->
+
+
+		<!-- <view class="parent">
+			<block v-for="(item,index) in btnList" :key="index">
+				<view class="u-f-ajc">{{item}}</view>
+			</block>
+			<view class="u-f-ajc">Add</view>
+		</view> -->
+
 	</view>
 </template>
 
 <script>
 	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue';
-	import uploudImages from '@/components/common/uploud-images.vue';
+	import uploudImages from '@/components/common/upload-images.vue';
 	import uniPopup from "@/components/popup/uni-popup.vue"
-
-	var sourceType = [
-		['camera'],
-		['album'],
-		['camera', 'album']
-	]
-	var sizeType = [
-		['compressed'],
-		['original'],
-		['compressed', 'original']
-	]
 	export default {
 		components: {
 			uniNavBar,
@@ -53,7 +61,17 @@
 				isSure: false,
 				textareaText: "",
 				content: '顶部弹 popup',
-				imageList: []
+				imageList: [],
+				btnList: [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7
+				],
+				
 			}
 		},
 		onShow() {
@@ -116,12 +134,37 @@
 			},
 			change(e) {
 				console.log('是否打开:' + e.show)
+			},
+			cancel() {
+				this.$nextTick(() => {
+					this.$refs['showtip'].c()
+				})
 			}
 		}
 	}
 </script>
 
 <style>
+	.parent {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		background-color: #00FF00;
+		flex-direction: row;
+		flex-wrap: wrap;
+		/* justify-content: space-between; */
+		justify-content: space-around;
+		/* justify-self: start; */
+	}
+
+	.parent view {
+		width: 30%;
+		background-color: #FF0000;
+		height:100upx;
+		border: 1upx solid #000000;
+	}
+
 	.uni-textarea {
 		border: 1upx solid #EEEEEE;
 	}
