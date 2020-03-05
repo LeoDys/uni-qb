@@ -110,6 +110,10 @@
 				}
 			}
         }
+        ,{
+            "path" : "pages/pda_scan/pda_scan",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

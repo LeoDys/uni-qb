@@ -1,13 +1,11 @@
 <template>
-	<view class="uni-list list-pd">
-		<view class="uni-list-cell cell-pd">
-			<view class="uni-uploader">
-				<view class="uni-uploader-head">
-					<view class="uni-uploader-title">点击可预览选好的图片</view>
-					<view class="uni-uploader-info">{{imageList.length}}/9</view>
-				</view>
-				<!-- 方法一 -->
-				<!-- <view class="uni-uploader-body">
+	<view class="uni-uploader-root">
+		<view class="uni-uploader-head">
+			<view class="uni-uploader-title">点击可预览选好的图片</view>
+			<view class="uni-uploader-info">{{imageList.length}}/9</view>
+		</view>
+		<!-- 方法一 -->
+		<!-- <view class="uni-uploader-body">
 					<view class="uni-uploader__files">
 						<block v-for="(image,index) in imageList" :key="index">
 							<view class="uni-uploader__file">
@@ -20,45 +18,43 @@
 						</view>
 					</view>
 				</view> -->
-				
-				<!-- 方法二 集成九宫格组件 -->
-				<view class="example-body">
-					<uni-grid :column="3" :highlight="true" @change="change" :showBorder="flase">
-						<template v-if="imageList.length>0">
-							<block v-for="(item, index) in imageList" :key="index">
-								<template v-if="index==imageList.length-1">
-									<uni-grid-item>
-										<view class="grid-item-box">
-											<view class="icon iconfont icon-shanchu" @tap="delect(index)"></view>
-											<image :src="item" class="image" mode="scaleToFill" @tap="previewImage" />
-										</view>
-									</uni-grid-item>
-									<uni-grid-item v-if="isShowAdd">
-										<view class="grid-item-box" @tap="chooseImage">
-											<image :src="'/static/plus.png'" class="image" mode="scaleToFill" />
-										</view>
-									</uni-grid-item>
-								</template>
-								<template v-else>
-									<uni-grid-item>
-										<view class="grid-item-box">
-											<view class="icon iconfont icon-shanchu" @tap="delect(index)"></view>
-											<image :src="item" class="image" mode="scaleToFill" @tap="previewImage" />
-										</view>
-									</uni-grid-item>
-								</template>
-							</block>
-						</template>
-						<template v-else>
+
+		<!-- 方法二 集成九宫格组件 -->
+		<view class="example-body">
+			<uni-grid :column="3" :highlight="true" @change="change" :showBorder="flase">
+				<template v-if="imageList.length>0">
+					<block v-for="(item, index) in imageList" :key="index">
+						<template v-if="index==imageList.length-1">
+							<uni-grid-item>
+								<view class="grid-item-box">
+									<view class="icon iconfont icon-shanchu" @tap="delect(index)"></view>
+									<image :src="item" class="image" mode="scaleToFill" @tap="previewImage" />
+								</view>
+							</uni-grid-item>
 							<uni-grid-item v-if="isShowAdd">
 								<view class="grid-item-box" @tap="chooseImage">
 									<image :src="'/static/plus.png'" class="image" mode="scaleToFill" />
 								</view>
 							</uni-grid-item>
 						</template>
-					</uni-grid>
-				</view>
-			</view>
+						<template v-else>
+							<uni-grid-item>
+								<view class="grid-item-box">
+									<view class="icon iconfont icon-shanchu" @tap="delect(index)"></view>
+									<image :src="item" class="image" mode="scaleToFill" @tap="previewImage" />
+								</view>
+							</uni-grid-item>
+						</template>
+					</block>
+				</template>
+				<template v-else>
+					<uni-grid-item v-if="isShowAdd">
+						<view class="grid-item-box" @tap="chooseImage">
+							<image :src="'/static/plus.png'" class="image" mode="scaleToFill" />
+						</view>
+					</uni-grid-item>
+				</template>
+			</uni-grid>
 		</view>
 	</view>
 </template>
@@ -130,14 +126,19 @@
 						}
 					}
 				});
+			},
+			change(e) {
+				console.log(e.detail.index)
 			}
 		}
 	}
 </script>
 
 <style>
-	.cell-pd {
+	.uni-uploader-root {
 		padding: 22upx 30upx;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.uni-uploader__file {

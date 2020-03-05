@@ -285,6 +285,9 @@
 				case 1:
 					this.$navTo.togo("../publish/publish", null);
 					break
+				case 0:
+					this.$navTo.togo("../pda_scan/pda_scan", null);
+					break
 			}
 		},
 		methods: {
