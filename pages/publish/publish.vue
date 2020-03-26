@@ -10,7 +10,7 @@
 			<textarea v-model="textareaText" placeholder="说点啥吧..."></textarea>
 		</view>
 		<!-- 图片上传 -->
-		<uploud-images @uploud="uploud"></uploud-images>
+		<upload-images @uploud="uploud"></upload-images>
 		<!-- 弹出层 -->
 		<!-- <uni-popup ref="showpopup" :type="center" @change="change"><text class="popup-content">{{ content }}</text></uni-popup> -->
 
@@ -48,12 +48,12 @@
 
 <script>
 	import uniNavBar from '@/components/uni-nav-bar/uni-nav-bar.vue';
-	import uploudImages from '@/components/common/upload-images.vue';
+	import uploadImages from '@/components/common/upload-images.vue';
 	import uniPopup from "@/components/popup/uni-popup.vue"
 	export default {
 		components: {
 			uniNavBar,
-			uploudImages,
+			uploadImages,
 			uniPopup
 		},
 		data() {
